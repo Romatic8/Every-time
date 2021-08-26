@@ -1,11 +1,14 @@
 import axios from 'axios'
+import {baseUrl} from '@/config/index.js'
+console.log(baseUrl);
+
 
 // 设置axios的基地址【面试题】
 // 每次diaoy个接口时都要写上完整的地址，每个接口的地址前面部分是相同的，on
 // 接口地址有相同的部分，我们要把相同的部分提取出设置一下，后面调用接口就不需要写相同的部分
 
 // axios.defaults.baseURL="相同的地址"
-axios.defaults.baseURL=""
+axios.defaults.baseURL=baseUrl
 
 // 添加请求拦截器----（设置请求头，传递token）
 axios.interceptors.request.use(function (config) {

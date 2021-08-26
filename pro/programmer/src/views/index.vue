@@ -8,12 +8,12 @@
      <!-- 登录 -->
      <div class="log">
          <p class="one">
-           <input type="text" placeholder="请输入手机号" name="" id="">
+           <input type="text" v-model="tel" placeholder="请输入手机号" name="" id="">
            <button class="btn" @click="get" v-if="!isshow">获取验证码</button>
             <button class="btn" v-if="isshow" style="color:#ccc;">获取验证码({{time}})</button>
          </p>
           <p class="two">
-           <input type="text" placeholder="请输入短信验证码" name="" id="">
+           <input type="text" v-model="code" placeholder="请输入短信验证码" name="" id="">
          </p>
            <div class="no">
            *未注册的手机号将自动注册
@@ -44,8 +44,8 @@ export default {
   components: {},
   data() {
     return {
-      tel: "",
-      code: "",
+      tel: "",//手机号
+      code: "",//验证码
       checked: false,
       isshow: false,
       time: 60
@@ -56,11 +56,32 @@ export default {
   methods: {
     //获取验证码
     async get() {
+      var reg= /^1[35879]\d{9}$/
+      if(!reg.test(this.tel)){
+        this.$toast.fail("手机号格式不正确")
+        return false
+      }
       this.isshow = true;
-      let res = await this.$http.get("/smsCode");
-      console.log(res, "222");
+      let res=await this.$http.post('/smsCode', {
+          mobile: this.tel,
+          sms_type: 'login'
+        })
+         .then(() => {
+           this.isshow = true;
+          this.time = 60;
+          let that= this;
+          var timer = setInterval(function() {
+            that.time--;
+            if (that.time <= 0) {
+              that.isshow = false;
+              clearInterval(timer);
+            }
+          }, 1000);
+        
+        });
+      
     },
-    login() {
+  async  login() {
       //勾选
       if (!this.checked) {
         this.$toast.fail("请勾选协议");
@@ -70,6 +91,21 @@ export default {
         this.$toast.fail("手机号格式不正确");
         return;
       }
+      //登录
+        let res=await this.$http.post('/login', {
+          mobile: this.tel,
+          sms_code:this.code,
+          type:2,//短信登录
+          client:1,//学生端
+        })
+        .then((res)=>{
+          console.log(res);
+          if(res.code==200){
+            this.$router.push('/set')
+          }
+        })
+         
+      
     }
   },
   created() {},
@@ -186,12 +222,15 @@ export default {
     background: #fff;
     width: 100%;
     font-size: 14px;
+   position: relative;
     .info {
       width: 100%;
       text-align: center;
       display: flex;
       align-items: center;
       justify-content: center;
+      position: absolute;
+      top: 400px;
     }
     p {
       font-size: 14px;

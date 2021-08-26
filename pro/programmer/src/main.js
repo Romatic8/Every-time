@@ -12,6 +12,10 @@ import './iconfont/iconfont.css'
 import Vant from 'vant';
 import 'vant/lib/index.css';
 
+// import {baseUrl} from '@/config'
+// console.log(baseUrl);
+
+
 Vue.use(Vant);
 Vue.use(ElementUI);
 // 把axios挂载到Vue的原型上，这样的话项目中任何一个组件都可以使用了
