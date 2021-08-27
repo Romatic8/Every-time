@@ -8,10 +8,10 @@ const vuexLocal = new VuexPersistence({
 })
 export default new Vuex.Store({
   state: {
-   
+    
   },
   mutations: {
-    
+   
   },
   getters: {
     

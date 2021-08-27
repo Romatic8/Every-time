@@ -26,7 +26,7 @@
       </div>
     </div>
     <div class="login">
-      <span >确定</span>
+      <span @click="sure">确定</span>
     </div>
     <div class="bottom">
       <span class="btn" >跳过</span>
@@ -41,13 +41,36 @@ export default {
     return {
     password:"",
     secondPassword:"",
-    active:""
+    active:"",
+    list:JSON.parse(localStorage.getItem("list")) || []
 }
   },
 
-  methods: {},
+  methods: {
+ async sure(){
+    if(this.password=="" || this.secondPassword==""){
+      this.$toast.fail("请输入设置的密码")
+      return
+    }
+    if(this.password!=this.secondPassword){
+      this.$toast.fail("量词输入的密码不相同")
+    }
+    if(this.password==this.secondPassword){
+      console.log(123);
+       let res=await this.$http.post("/password",{
+         mobile:this.list.mobile,
+         password:this.password,
+         sms_code:this.list.sms_code
+       })
+       if(res.code==200){
+         this.$router.push("/Person")
+       }
+    }
+  }
+},
 
   mounted () {
+  console.log(this.list);
   },
 }
 </script> 
@@ -109,6 +132,7 @@ input::-webkit-input-placeholder {
     height: 90px;
     line-height: 90px;
     margin-top: 110px;
+    background: red;
   }
 }
 .bottom {
@@ -124,6 +148,7 @@ input::-webkit-input-placeholder {
     border: 2px solid #d9d9d9;
     border-radius: 10px;
     margin: 30px;
+    
   }
 }
 </style>

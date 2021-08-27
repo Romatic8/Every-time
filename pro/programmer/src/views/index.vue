@@ -40,12 +40,14 @@
 </template>
 
 <script>
+import { smsCode,login } from "@/http/api";
+
 export default {
   components: {},
   data() {
     return {
-      tel: "",//手机号
-      code: "",//验证码
+      tel: "", //手机号
+      code: "", //验证码
       checked: false,
       isshow: false,
       time: 60
@@ -56,32 +58,28 @@ export default {
   methods: {
     //获取验证码
     async get() {
-      var reg= /^1[35879]\d{9}$/
-      if(!reg.test(this.tel)){
-        this.$toast.fail("手机号格式不正确")
-        return false
+      var reg = /^1[35879]\d{9}$/;
+      if (!reg.test(this.tel)) {
+        this.$toast.fail("手机号格式不正确");
+        return false;
       }
       this.isshow = true;
-      let res=await this.$http.post('/smsCode', {
-          mobile: this.tel,
-          sms_type: 'login'
-        })
-         .then(() => {
-           this.isshow = true;
-          this.time = 60;
-          let that= this;
-          var timer = setInterval(function() {
-            that.time--;
-            if (that.time <= 0) {
-              that.isshow = false;
-              clearInterval(timer);
-            }
-          }, 1000);
-        
-        });
-      
+      let res = smsCode({ mobile: this.tel, sms_type: "login" }).then(res => {
+        console.log(res, "12");
+        this.isshow = true;
+        this.time = 60;
+        let that = this;
+        var timer = setInterval(function() {
+          that.time--;
+          if (that.time <= 0) {
+            that.isshow = false;
+            clearInterval(timer);
+          }
+        }, 1000);
+      });
     },
-  async  login() {
+    //点击登录按钮
+    async login() {
       //勾选
       if (!this.checked) {
         this.$toast.fail("请勾选协议");
@@ -92,20 +90,23 @@ export default {
         return;
       }
       //登录
-        let res=await this.$http.post('/login', {
+      let res =login({
           mobile: this.tel,
-          sms_code:this.code,
-          type:2,//短信登录
-          client:1,//学生端
-        })
-        .then((res)=>{
+          sms_code: this.code,
+          type: 2, //短信登录
+          client: 1 //学生端
+        }) 
+        .then(res => {
           console.log(res);
-          if(res.code==200){
-            this.$router.push('/set')
+          if (res.code == 200) {
+            this.$router.push("/set");
           }
-        })
-         
-      
+        });
+      var obj = {
+        mobile: this.tel,
+        sms_code: this.code
+      };
+      localStorage.setItem("list", JSON.stringify(obj));
     }
   },
   created() {},
@@ -222,7 +223,7 @@ export default {
     background: #fff;
     width: 100%;
     font-size: 14px;
-   position: relative;
+    position: relative;
     .info {
       width: 100%;
       text-align: center;
