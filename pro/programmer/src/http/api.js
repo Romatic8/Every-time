@@ -56,3 +56,21 @@ export function appIndex(arg){
         method:"get"
     })
 }
+
+//news咨询全部内容的接口
+export function infor(arg){
+    return service({
+        url:request_ur.infor,
+        data:arg, //参数
+        method:"post"
+    })
+}
+
+//news咨询 tab
+export function infoClassfiy(arg){
+    return service({
+        url:request_ur.infoClassfiy,
+        data:arg, //参数
+        method:"get"
+    })
+}

@@ -169,6 +169,8 @@ export default {
           line-height: 60px;
         }
      /deep/  .van-image__img{
+       width: 180px;
+       height: 180px;
          border-radius: 50% !important;
        }
         .van-card__desc {

@@ -7,6 +7,7 @@ import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'amfe-flexible'
 import './iconfont/iconfont.css'
+import * as filters from './http/filter';
 
 //配置vantUI组件库
 import Vant from 'vant';
@@ -14,7 +15,9 @@ import 'vant/lib/index.css';
 
 // import {baseUrl} from '@/config'
 // console.log(baseUrl);
-
+Object.keys(filters).forEach(key => {
+    Vue.filter(key, filters[key])
+});
 
 Vue.use(Vant);
 Vue.use(ElementUI);

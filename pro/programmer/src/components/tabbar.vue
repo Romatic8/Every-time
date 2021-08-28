@@ -1,10 +1,10 @@
 <template>
 <div class="tabbar">
    <ul>
-       <li v-for="(item,index) in tabbar_list" :key="index">
+       <li v-for="(item,index) in tabbar_list" :key="index" >
            <router-link :to="item.url">
              <img @click="fn(index)" class="t_icon" :src="active==index ? item.nav_img_checked : item.nav_img" alt="">
-              <p class="t_name">
+              <p @click="fn(index)" :class="{active:active==index}">
                   {{item.name}}
               </p>
            </router-link>
@@ -27,7 +27,6 @@ export default {
 
    async created(){
      let res =await tabbar()
-     console.log(res.data.index,"222");
      this.tabbar_list=res.data.index
   },
 
@@ -44,7 +43,7 @@ export default {
 <style scoped lang='scss'>
 .tabbar {
   width: 100%;
-  height: 105px;
+  height: 108px;
   background: yellow;
   position: fixed;
   bottom: 0px;
@@ -55,15 +54,14 @@ export default {
     li {
       width: 20%;
       text-align: center;
-      padding-top: 2px;
       box-sizing: border-box;
       .t_icon{
           width: 55px;
-          height: 60px;
-          
+          height: 63px;
+          margin-top: 3px;
       }
-      .router-link-active{
-          color: red;
+      .router-link-exact-active{
+        color: red;
       }
     }
    

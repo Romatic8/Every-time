@@ -5,8 +5,41 @@ Vue.use(VueRouter);
 
 
 const routes = [
-  //注册页面
+ 
   {
+    path: "/home",
+    component: () => import('@/views/home'),
+    redirect:"/Index",
+    children:[
+     {
+      path: "/Index",
+      name:"/Index",
+      component: () => import('@/views/Index/Index.vue'),
+     },
+     {
+      path: "/ShowTeachers",
+      name:"/ShowTeachers",
+      component: () => import('@/views/ShowTeachers/ShowTeachers.vue'),
+     },
+     {
+      path: "/News",
+      name:"/News",
+      component: () => import('@/views/News/News.vue'),
+     },
+     {
+      path: "/BookList",
+      name:"/BookList",
+      component: () => import('@/views/BookList/BookList.vue'),
+     },
+     {
+      path: "/Person",
+      name:"/Person",
+      component: () => import('@/views/Person/Person.vue'),
+     }
+    ]
+  },
+   //注册页面
+   {
     path: '/',
     component: () => import('@/views/index'),
   },
@@ -15,32 +48,6 @@ const routes = [
     path: '/set',
     component: () => import('@/views/set'),
   },
-  {
-    path: "/home",
-    component: () => import('@/views/home'),
-    children:[
-     {
-      path: "/Index",
-      component: () => import('@/views/Index/Index.vue'),
-     },
-     {
-      path: "/ShowTeachers",
-      component: () => import('@/views/ShowTeachers/ShowTeachers.vue'),
-     },
-     {
-      path: "/News",
-      component: () => import('@/views/News/News.vue'),
-     },
-     {
-      path: "/BookList",
-      component: () => import('@/views/BookList/BookList.vue'),
-     },
-     {
-      path: "/Person",
-      component: () => import('@/views/Person/Person.vue'),
-     }
-    ]
-  }
 
 
 ]
