@@ -107,6 +107,7 @@ export default {
         sms_code: this.code
       };
       localStorage.setItem("list", JSON.stringify(obj));
+      this.$store.commit("dotoken",res.data)
     }
   },
   created() {},

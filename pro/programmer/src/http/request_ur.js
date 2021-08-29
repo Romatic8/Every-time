@@ -1,4 +1,4 @@
-//封账所有路径  便于后面的维护
+//封装所有路径  便于后面的维护
 module.exports={
     smsCode:"/smsCode", //短信验证
     login:"/login",  //登录

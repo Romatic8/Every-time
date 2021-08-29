@@ -29,7 +29,7 @@
       <span @click="sure">确定</span>
     </div>
     <div class="bottom">
-      <span class="btn" >跳过</span>
+      <span class="btn" @click="skip">跳过</span>
     </div>
   </div>
 </template>
@@ -47,6 +47,9 @@ export default {
   },
 
   methods: {
+  skip(){
+    this.$router.push('/mys')
+  },
  async sure(){
     if(this.password=="" || this.secondPassword==""){
       this.$toast.fail("请输入设置的密码")

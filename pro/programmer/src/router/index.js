@@ -36,7 +36,11 @@ const routes = [
       name:"/Person",
       component: () => import('@/views/Person/Person.vue'),
      },
-    
+     {
+      path: "/mys",
+      name:"/mys",
+      component: () => import('@/views/Person/mys.vue'),
+     },
     ]
   },
    //注册页面
