@@ -35,7 +35,8 @@ const routes = [
       path: "/Person",
       name:"/Person",
       component: () => import('@/views/Person/Person.vue'),
-     }
+     },
+    
     ]
   },
    //注册页面

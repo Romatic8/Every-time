@@ -6,7 +6,7 @@ import axios from './http/service'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'amfe-flexible'
-import './iconfont/iconfont.css'
+import '@/assets/iconfont/iconfont.css'
 import * as filters from './http/filter';
 
 //配置vantUI组件库
