@@ -7,53 +7,49 @@
           <p> 
              <van-icon name="manager" class="user" />
           </p>
-            <p> <span class="tt">{{$store.state.token.nickname}}</span></p>
+            <p class="pp"> <span class="tt"> {{$store.state.token.nickname}}</span></p>
+           
             <p class="tag"><van-tag type="primary" size="large">签到</van-tag></p>
       </div>
-           
-     
-         
-        
-      
         <van-grid :column-num="3">
           <van-grid-item
             v-for="(item,index) in arr"
             :key="index"
             :icon="item.icon"
             :text="item.title"
-             @click="$router.push('/')"
+             @click="$router.push('/login')"
           />
         </van-grid>
       </div>
     </div>
     <!-- 下边 -->
    <div class="list">
-    <van-cell-group @click="$router.push('/')">
+    <van-cell-group @click="$router.push('/login')">
       <van-cell title="我的作业"  icon="records" is-link />
       <van-cell title="我的社区"  icon="like" is-link />
     </van-cell-group>
    </div>
     <div class="list">
-    <van-cell-group  @click="$router.push('/')">
+    <van-cell-group  @click="$router.push('/login')">
       <van-cell title="课程订单"  icon="orders-o" is-link />
       <van-cell title="图书订单"  icon="newspaper-o" is-link />
     </van-cell-group>
    </div>
     <div class="list">
-    <van-cell-group  @click="$router.push('/')">
+    <van-cell-group  @click="$router.push('/login')">
       <van-cell title="优惠券"  icon="gift-o" is-link />
       <van-cell title="学习卡"  icon="coupon-o" is-link />
       <van-cell title="分销中心"  icon="notes-o" is-link />
 
     </van-cell-group>
    </div>
-    <div class="list">
+    <div class="list end">
     <van-cell-group  >
       <van-cell title="信息中心"  icon="comment-o" is-link />
       <van-cell title="地址管理"  icon="location-o" is-link />
       <van-cell title="关于我们"  icon="friends-o" is-link />
       <van-cell title="意见反馈"  icon="records" is-link />
-      <van-cell title="设置"  icon="setting-o" is-link @click="$router.push('/mys/set')"/>
+      <van-cell  title="设置"  icon="setting-o" is-link @click="$router.push('/setpwd')"/>
 
     </van-cell-group>
    </div>
@@ -94,7 +90,10 @@ export default {
 .box {
   width: 100%;
   height: 100%;
-  padding-bottom: 50px;
+  padding-bottom: 80px;
+  .end{
+    margin-bottom: 30px;
+  }
   .bar {
     width: 100%;
     height: 500px;
@@ -104,18 +103,26 @@ export default {
     .t {
       width: 100%;
       height: 200px;
-      line-height: 200px;
       position: relative;
       .top{
           width: 100%;
           display: flex;
         justify-content: space-around;
         align-items: center;
-        
           position: relative;
+          .pp{
+            width:280px;
+            height: 55px;
+            font-size: 28px;
+            margin-top: 100px;
+           
+          }
           .tt{
-            color: white;
-            font-size: 20px;
+            display: inline-block;
+           
+            
+            
+            margin-left: 50px;
           }
         .tag{
             .van-tag{

@@ -1,17 +1,14 @@
 <template>
 <div class="teacher">
     <div class="box1">
-            <div class="top" >
-               <p><span>|</span> <b>{{list[2].channel_info.name}}</b></p>
-               <b>更多></b>
-            </div>
-            <div class="card">
+            <div class="card" >
                 <van-card
-                v-for="(ite,ind) in list[2].list"
+                v-for="(ite,ind) in list.list"
                 :key="ind"
                 :desc="ite.introduction"
                 :title="ite.teacher_name"
                 :thumb="ite.teacher_avatar"
+                :thumb-link="'/detail?teacher_id='+ite.teacher_id"
             />
             </div>
         </div>
@@ -37,9 +34,9 @@ export default {
      async getapp() {
       let { data: res } = await appIndex();
       console.log(res, "11");
-      this.list = res;
-      console.log(this.list);
-    }
+      this.list = res[2];
+      console.log(this.list,"1");
+    },
 },
 
   mounted () {

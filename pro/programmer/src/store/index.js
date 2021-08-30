@@ -6,13 +6,24 @@ import VuexPersistence from "vuex-persist";
 const vuexLocal = new VuexPersistence({
   storage: window.localStorage,//存储的位置
 })
-export default new Vuex.Store({
+let store= new Vuex.Store({
   state: {
-    token:""
+    token:[],
+    pwd:[]
   },
   mutations: {
-    dotoken(state,data){
-      state.token=data
+    //获取验证码
+    setToken(state,arg){
+      state.token=arg
+      console.log(arg,"123");
+    },
+    //存储密码
+    savePwd(state,obj){
+      state.pwd=obj
+      console.log(obj,"设置好的密码");
+    },
+    logout(state){
+      state.token=[]
     }
   },
   getters: {
@@ -24,3 +35,4 @@ export default new Vuex.Store({
   },
   plugins: [vuexLocal.plugin]
 })
+export default store;

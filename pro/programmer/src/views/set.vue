@@ -66,7 +66,7 @@ export default {
          sms_code:this.list.sms_code
        })
        if(res.code==200){
-         this.$router.push("/Person")
+         this.$router.push("/mys")
        }
     }
   }
@@ -121,7 +121,6 @@ input::-webkit-input-placeholder {
 }
 .login {
   height: 374px;
- 
   background-size: 100% 100%;
   font-size: 28px;
   font-family: PingFangSC-Medium;

@@ -32,7 +32,7 @@
         <div class="box1">
             <div class="top" >
                <p><span>|</span> <b>{{list[0].channel_info.name}}</b></p>
-               <b>更多></b>
+               <b @click="more">更多></b>
             </div>
             <div class="card">
                 <van-card
@@ -41,6 +41,7 @@
                 :desc="ite.introduction"
                 :title="ite.teacher_name"
                 :thumb="ite.teacher_avatar"
+                 :thumb-link="'/detail?teacher_id='+ite.teacher_id"
             />
             </div>
         </div>
@@ -56,13 +57,23 @@
                 :desc="ite.title"
                 :title="ite.teacher_name"
                 :thumb="ite.cover_img"
-            />
+                 :thumb-link="'/detail?teacher_id='+ite.teacher_id"
+            >
+             <template #footer>
+                 <p v-if="ite.price==ite.underlined_price"><span  style="color:green;">免费</span></p >
+                   <p v-else>
+                       <s>{{ite.underlined_price}}</s>
+                       <b  style="color:red;" >{{ite.price}}</b>
+                  </p >
+                </template>
+
+            </van-card>
             </div>
         </div>
         <div class="box1">
             <div class="top" >
                <p><span>|</span> <b>{{list[2].channel_info.name}}</b></p>
-               <b>更多></b>
+               <b @click="more">更多></b>
             </div>
             <div class="card">
                 <van-card
@@ -71,7 +82,9 @@
                 :desc="ite.introduction"
                 :title="ite.teacher_name"
                 :thumb="ite.teacher_avatar"
+                 :thumb-link="'/detail?teacher_id='+ite.teacher_id"
             />
+             
             </div>
         </div>
     </div>
@@ -109,6 +122,9 @@ export default {
       console.log(res, "11");
       this.list = res;
       console.log(this.list);
+    },
+    more(){
+      this.$router.push('/showTeachers')
     }
   },
 

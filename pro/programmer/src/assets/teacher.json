@@ -1,0 +1,56 @@
+{
+    "code": 200,
+    "data": [
+        {
+            "teacher": {
+                "avatar": "http://120.53.31.103:84/uploads/image/2021-07-05/CFNmEpeu75I8Epjnpygq4LolikA6TgFZkJfUDq3X.png",
+                "id": 347,
+                "introduction": "小胖墩",
+                "real_name": "杨岭"
+            },
+            "flag": 2,
+            "msg": "操作成功"
+        },
+        {
+            "teacher": {
+                "avatar": "http://120.53.31.103:84/uploads/image/2021-07-05/CFNmEpeu75I8Epjnpygq4LolikA6TgFZkJfUDq3X.png",
+                "id": 347,
+                "introduction": "全栈开发项目经理",
+                "real_name": "谢龙"
+            },
+            "flag": 2,
+            "msg": "操作成功"
+        },
+        {
+            "teacher": {
+                "avatar": "http://120.53.31.103:84/uploads/image/2021-07-05/CFNmEpeu75I8Epjnpygq4LolikA6TgFZkJfUDq3X.png",
+                "id": 347,
+                "introduction": "全栈最牛任务",
+                "real_name": "葫芦娃"
+            },
+            "flag": 2,
+            "msg": "操作成功"
+        },
+        {
+            "teacher": {
+                "avatar": "http://120.53.31.103:84/uploads/image/2021-07-05/ZDGzYZ0832MhLmMKcts2cyKxVZ2SOvkKxWRnaG2v.png",
+                "id": 341,
+                "introduction": "前端技术开发混合技术",
+                "real_name": "马兴龙"
+            },
+            "flag": 2,
+            "msg": "操作成功"
+        },
+        {
+            "teacher": {
+                "avatar":"http://120.53.31.103:84/uploads/image/2021-07-05/RGpc74CJ2DtSYAxMwe7gAlG9Qs68WoCZoFLScTUU.png",
+                "id": 341,
+                "introduction": "前端技术开发混合技术",
+                "real_name": "冯丫丫"
+            },
+            "flag": 2,
+            "msg": "操作成功"
+          
+        }
+    ]
+}

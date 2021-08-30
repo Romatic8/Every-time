@@ -48,7 +48,7 @@ export function nav(arg){
     })
 }
 
-//首页详情
+//首页列表
 export function appIndex(arg){
     return service({
         url:request_ur.appIndex,
@@ -72,5 +72,34 @@ export function infoClassfiy(arg){
         url:request_ur.infoClassfiy,
         data:arg, //参数
         method:"get"
+    })
+}
+
+
+//咨询主讲课程
+
+export function detail(arg){
+    return service({
+        url:request_ur.detail+arg,
+        data:arg, //参数
+        method:"get"
+    })
+}
+
+//主讲课程的详情页面
+export function comment(arg){
+    return service({
+        url:request_ur.comment+arg,
+        data:arg, //参数
+        method:"get"
+    })
+}
+
+//点击讲师进去后的主讲课程
+export function course(arg){
+    return service({
+        url:request_ur.course,
+        data:arg, //参数
+        method:"post"
     })
 }

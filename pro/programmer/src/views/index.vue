@@ -6,7 +6,7 @@
      </div>
 
      <!-- 登录 -->
-     <div class="log">
+     <div class="log" v-if="userpwd">
          <p class="one">
            <input type="text" v-model="tel" placeholder="请输入手机号" name="" id="">
            <button class="btn" @click="get" v-if="!isshow">获取验证码</button>
@@ -17,7 +17,7 @@
          </p>
            <div class="no">
            *未注册的手机号将自动注册
-           <button class="btn2">使用密码登录</button>
+           <button class="btn2" @click="userPwd">使用密码登录</button>
          </div>
         <div class="deng">
            <van-button class="dl" type="danger" @click="login"> 登录</van-button>
@@ -25,10 +25,29 @@
        
      </div>
 
+      <!-- 使用密码登录 -->
+        <div class="log" v-else>
+         <p class="one">
+           <input type="text" v-model="tel" placeholder="请输入手机号" name="" id="">
+         </p>
+          <p class="two">
+           <input type="text" v-model="pwd" placeholder="请输入密码" name="" id="">
+         </p>
+           <div class="no">
+           找回密码
+           <button class="btn2" @click="userPwd">注册/验证码登录</button>
+         </div>
+        <div class="deng">
+           <van-button class="dl" type="danger" @click="userPwd2"> 登录</van-button>
+        </div>
+       
+     </div>
+
+
+
      <!-- 底部 -->
      <div class="inf">
       <div class="info">
-         <!-- <img style="width:30px;height:30px;" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACEAAAAhCAYAAABX5MJvAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyhpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDUuNi1jMTM4IDc5LjE1OTgyNCwgMjAxNi8wOS8xNC0wMTowOTowMSAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wTU09Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9tbS8iIHhtbG5zOnN0UmVmPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvc1R5cGUvUmVzb3VyY2VSZWYjIiB4bWxuczp4bXA9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC8iIHhtcE1NOkRvY3VtZW50SUQ9InhtcC5kaWQ6MzY0RTVCOTQ1QUEyMTFFQUIzQzNDMEVBNEQ3QkEyNEIiIHhtcE1NOkluc3RhbmNlSUQ9InhtcC5paWQ6MzY0RTVCOTM1QUEyMTFFQUIzQzNDMEVBNEQ3QkEyNEIiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIENDIDIwMTcgKE1hY2ludG9zaCkiPiA8eG1wTU06RGVyaXZlZEZyb20gc3RSZWY6aW5zdGFuY2VJRD0ieG1wLmlpZDpGRDcxMEU1ODVBN0YxMUVBQjNDM0MwRUE0RDdCQTI0QiIgc3RSZWY6ZG9jdW1lbnRJRD0ieG1wLmRpZDoyMDNCOTRDNjVBODAxMUVBQjNDM0MwRUE0RDdCQTI0QiIvPiA8L3JkZjpEZXNjcmlwdGlvbj4gPC9yZGY6UkRGPiA8L3g6eG1wbWV0YT4gPD94cGFja2V0IGVuZD0iciI/PjuKVAAAAAK7SURBVHjaxJjLaxNRFMZP7oSC8dE0CUpaKYoRF2n1H7BdiIsqrdFlWjE1VRcVFKwRXLgRX0FJ8RkUE3UhbhXjE0Wx7hRF1JVdmnRjIoEajJDoOfEMjElmOo9M/OCDLGYmv7n33Hu/M44ceMCAAugQehDdg/ajfeg8OofOomfQd9Gzeh7o/50Hhw4IgY6gp9BBA8Cf0Qn0LXTFCsQQ+iy6D8yLYGLoR2oQQuPtT/ONVgCAR+8h+gw/t0HNRmIx+g56BFqvDDqMnteaDsFFZQeAEoSKu6o2HSdtBiANo0+pTceQWvHYpK30f8rpoBH50IIiNLpq1iNEVZ6OSJsB5FUzrpyOTwY3IkNacuwwVLNzUErfbhgNHIk+wVuxbQCdyXOw9PhR6Ng00HQ05hzegJOXiz0A16bBtXcXlDNPoBg9oHZZyMmHUesBrp8H18TOGkBhZFTr0kHBp2FrAa4m9AKQegiiW/MI9a8A4enSD5C6AK59Eb0ApG5aHWX80aF2xfLZt+DweuBb/0aofM0tDBAdg/KDp1AYDuvl/iU4kKjqx+UUCHcn+D6+BmnNanWA9MUawM/7j40AkPKCE5E6xHQSivuP/AV58wyk3pUN17hvXALX7tEawPdtY0ZLKCc4kmmqdCUFxckYiC43+N69AGlV7z+rYNF4uFYDJgBIWcGZcEGVkmko7jkIAuvD9/4lONcFYFnihJFVoKYZKkzaMb/ovYM2H9qEZBkswmZaa+rsoOGnOig/fwWFzTssnaR0dsgQUXQK2q8JhEjLEBLniWAbAShPbECIipwnKhzL26mY3I8oMyZFu3ibAOLKKNksbd/jMPrf0naV+4KMjQBhGUD55vWaZ9K4DVMQUjY+Wh2YUlu4Fw1aXAWavaierlziNH7IZFd+s374zUDUf5/Yjh7gREaByGv1+8QfAQYAF+DnFinyD5YAAAAASUVORK5CYII=" alt=""> -->
        <van-checkbox v-model="checked" checked-color="#ee0a24"></van-checkbox>
        <p >我同意</p>
         <a  href="/treaty?name=user_protect_contract" class="">用户注册协议</a>
@@ -40,7 +59,7 @@
 </template>
 
 <script>
-import { smsCode,login } from "@/http/api";
+import { smsCode, login } from "@/http/api";
 
 export default {
   components: {},
@@ -50,7 +69,9 @@ export default {
       code: "", //验证码
       checked: false,
       isshow: false,
-      time: 60
+      time: 60,
+      userpwd: true,
+      pwd: "" //密码
     };
   },
   computed: {},
@@ -90,24 +111,48 @@ export default {
         return;
       }
       //登录
-      let res =login({
-          mobile: this.tel,
-          sms_code: this.code,
-          type: 2, //短信登录
-          client: 1 //学生端
-        }) 
-        .then(res => {
-          console.log(res);
-          if (res.code == 200) {
-            this.$router.push("/set");
-          }
-        });
-      var obj = {
+      let res = await login({
         mobile: this.tel,
-        sms_code: this.code
-      };
-      localStorage.setItem("list", JSON.stringify(obj));
-      this.$store.commit("dotoken",res.data)
+        sms_code: this.code,
+        type: 2, //短信登录
+        client: "1" //学生端
+      });
+
+      var obj = res.data;
+      if (res.code == 200) {
+        this.$router.push("/set");
+      }
+      this.$store.commit("setToken", obj);
+    },
+    //切换密码和验证码登录
+    userPwd() {
+      this.userpwd = !this.userpwd;
+    },
+    //使用密码登录
+    async userPwd2() {
+      if (this.tel == "") {
+        this.$toast.fail("手机号格式不正确");
+        return;
+      }
+      //勾选
+      if (!this.checked) {
+        this.$toast.fail("请勾选协议");
+        return;
+      }
+      let res = await login({
+        mobile: this.tel,
+        password: this.pwd,
+        type: 1, //密码登录
+        client: "1" //学生端
+      });
+      console.log(res);
+      if (res.code == 200) {
+        this.$toast.success("登陆成功");
+        this.$router.push("/mys");
+        this.$store.commit('setToken',res.data)
+      } else {
+        this.$toast.fail(res.msg);
+      }
     }
   },
   created() {},
@@ -201,6 +246,7 @@ export default {
       margin-bottom: 30px;
     }
   }
+
   .no {
     width: 75%;
 

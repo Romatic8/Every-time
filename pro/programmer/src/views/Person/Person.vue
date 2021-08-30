@@ -8,7 +8,7 @@
         </p>
         <p class="de">
           <b @click="login()">登录/</b>
-          <b>注册</b>
+          <b @click="login()">注册</b>
         </p>
         <van-grid :column-num="3">
           <van-grid-item
@@ -16,7 +16,7 @@
             :key="index"
             :icon="item.icon"
             :text="item.title"
-             @click="$router.push('/')"
+             @click="$router.push('/login')"
              badge="2+" 
           />
         </van-grid>
@@ -24,19 +24,19 @@
     </div>
     <!-- 下边 -->
    <div class="list">
-    <van-cell-group @click="$router.push('/')">
+    <van-cell-group @click="$router.push('/login')">
       <van-cell title="我的作业"  icon="records" is-link />
       <van-cell title="我的社区"  icon="like" is-link />
     </van-cell-group>
    </div>
     <div class="list">
-    <van-cell-group  @click="$router.push('/')">
+    <van-cell-group  @click="$router.push('/login')">
       <van-cell title="课程订单"  icon="orders-o" is-link />
       <van-cell title="图书订单"  icon="newspaper-o" is-link />
     </van-cell-group>
    </div>
     <div class="list">
-    <van-cell-group  @click="$router.push('/')">
+    <van-cell-group  @click="$router.push('/login')">
       <van-cell title="优惠券"  icon="gift-o" is-link />
       <van-cell title="学习卡"  icon="coupon-o" is-link />
       <van-cell title="分销中心"  icon="notes-o" is-link />
@@ -49,7 +49,7 @@
       <van-cell title="地址管理"  icon="location-o" is-link />
       <van-cell title="关于我们"  icon="friends-o" is-link />
       <van-cell title="意见反馈"  icon="records" is-link />
-      <van-cell title="设置"  icon="setting-o" is-link @click="$router.push('/set')"/>
+      <van-cell title="设置"  icon="setting-o" is-link @click="$router.push('/login')"/>
 
     </van-cell-group>
    </div>
@@ -81,7 +81,7 @@ export default {
   },
   methods: {
     login() {
-      this.$router.push("/");
+      this.$router.push("/login");
     }
   }
 };

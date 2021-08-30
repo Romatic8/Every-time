@@ -45,15 +45,37 @@ const routes = [
   },
    //注册页面
    {
-    path: '/',
+    path: '/login',
     component: () => import('@/views/index'),
+  },
+  {
+    path: '/detail',
+    component: () => import('@/views/ShowTeachers/detail.vue'),
   },
   //设置密码
   {
     path: '/set',
-    component: () => import('@/views/set'),
+    component: () => import('@/views/set.vue'),
   },
-
+  //登录后的设置密码
+  {
+    path: '/setpwd',
+    component: () => import('@/views/Person/setpwd.vue'),
+  },
+  //设置密码    通过验证码设置
+  {
+    path: '/setP',
+    component: () => import('@/views/Person/setP.vue'),
+  },
+  //详情页面
+  {
+    path: '/detailCourse',
+    component: () => import('@/views/ShowTeachers/detailCourse.vue'),
+  },
+  {
+    path:"*",
+    redirect:"/home",  
+  }
 
 ]
 

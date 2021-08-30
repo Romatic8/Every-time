@@ -8,4 +8,8 @@ module.exports={
     nav:"/nav", //九宫格,
     infor:"/information/index",//咨询全部内容的接口
     infoClassfiy:"/information/classify?",//咨询里面的tab字段
+    comment:"/courseInfo/basis_id=",//主讲课程的详情页面
+    detail:"/teacher/",
+    course:"/teacher/mainCourse",//主讲课程
+    book:"/book/classify?",//图书
 }
