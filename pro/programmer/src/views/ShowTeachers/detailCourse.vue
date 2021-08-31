@@ -29,16 +29,6 @@
                 placeholder="课程售后"
                 @click="show = true"
                 />
-                <!-- <van-popup v-model="show" round position="bottom"> --> 
-                <!-- <van-cascader
-                     :options="options"
-                    @close="show = false"
-                    @finish="onFinish"
-                >
-                  <template #title>{{detailCourse.service[0].name}}  <br/>
-                     {{detailCourse.service[0].description}}
-                   </template>
-                </van-cascader> -->
                    <van-popup
                         class="course-serve-popup"
                         v-show="show"

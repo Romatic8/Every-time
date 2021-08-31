@@ -12,7 +12,7 @@ import store from '../store'
 const service = axios.create({
   baseURL: baseUrl, // url = base api url + request url
   // withCredentials: true, // send cookies when cross-domain requests
-  timeout: 5000, // request timeout
+  timeout: 50000, // request timeout
 })
 
 // axios.defaults.baseURL="相同的地址"
@@ -26,7 +26,7 @@ service.interceptors.request.use(function (config) {
       forbidClick: true
     })
     
-    config.headers['Authorization']=store.state.token
+    config.headers['Authorization']=" Bearer "+store.state.toke
     
     return config;
   }, function (error) {

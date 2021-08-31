@@ -59,7 +59,6 @@ export default {
       this.$toast.fail("量词输入的密码不相同")
     }
     if(this.password==this.secondPassword){
-      console.log(123);
        let res=await this.$http.post("/password",{
          mobile:this.list.mobile,
          password:this.password,

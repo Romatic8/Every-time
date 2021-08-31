@@ -1,0 +1,26 @@
+{
+    "code": 200,
+    "msg": "\u6210\u529f",
+    "data": {
+        "limit": 10,
+        "total": 1,
+        "current_page": 1,
+        "list": [
+            {
+                "id": 1,
+                "cover_img": "http:\/\/120.53.31.103:84\/uploads\/image\/2021-01-21\/0iHDEF8fiqFAern6hLl0erzc1P1d94OAHUPkgNBw.jpeg",
+                "goods_id": 200,
+                "goods_type": 1,
+                "exchange_price": 1,
+                "course_status": 1,
+                "course_name": "\u8bba\u6e23\u7537\u7684\u81ea\u6211\u4fee\u517b",
+                "course_type": 7,
+                "book_name": null,
+                "author": null,
+                "book_status": null,
+                "periods_num": 0,
+                "teacher": []
+            }
+        ]
+    }
+}

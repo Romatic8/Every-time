@@ -28,10 +28,10 @@
                             >
                                <template #footer>
                                    <p v-if="item.price==item.underlined_price"><span  style="color:green;">免费</span></p >
-                   <p v-else>
-                       <s>{{item.underlined_price}}</s>
-                       <b  style="color:red;" >{{item.price}}</b>
-                  </p >
+                                   <p v-else>
+                                       <s>{{item.underlined_price}}</s>
+                                       <b  style="color:red;" >{{item.price}} </b>
+                                  </p >
                                </template>
                                <template  #price>
                                   <span id="span">

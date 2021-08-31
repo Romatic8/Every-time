@@ -31,7 +31,7 @@
            <input type="text" v-model="tel" placeholder="请输入手机号" name="" id="">
          </p>
           <p class="two">
-           <input type="text" v-model="pwd" placeholder="请输入密码" name="" id="">
+           <input type="password" v-model="pwd" placeholder="请输入密码" name="" id="">
          </p>
            <div class="no">
            找回密码

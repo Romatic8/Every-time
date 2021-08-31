@@ -9,6 +9,7 @@ const vuexLocal = new VuexPersistence({
 let store= new Vuex.Store({
   state: {
     token:[],
+    toke:"",
     pwd:[]
   },
   mutations: {
@@ -16,6 +17,7 @@ let store= new Vuex.Store({
     setToken(state,arg){
       state.token=arg
       console.log(arg,"123");
+      state.toke=arg.remember_token
     },
     //存储密码
     savePwd(state,obj){

@@ -9,7 +9,7 @@
           </p>
             <p class="pp"> <span class="tt"> {{$store.state.token.nickname}}</span></p>
            
-            <p class="tag"><van-tag type="primary" size="large">签到</van-tag></p>
+            <p class="tag" @click="$router.push('/sign')"><van-tag  type="primary" size="large">签到</van-tag></p>
       </div>
         <van-grid :column-num="3">
           <van-grid-item

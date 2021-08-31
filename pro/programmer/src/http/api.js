@@ -103,3 +103,40 @@ export function course(arg){
         method:"post"
     })
 }
+
+//签到
+export function userinfo(arg){
+    return service({
+        url:request_ur.userinfo,
+        data:arg, //参数
+        method:"get"
+    })
+}
+
+
+//日历
+export function sign(arg){
+    return service({
+        url:request_ur.sign,
+        data:arg, //参数
+        method:"get"
+    })
+}
+
+//签到里面的好课推荐
+export function inter(params){
+    return service({
+        url:request_ur.inter,
+        params:params, //参数
+        method:"get"
+    })
+}
+
+//推荐中的详情
+export function signDetail(arg){
+    return service({
+        url:request_ur.signDetail,
+        data:arg, //参数
+        method:"get"
+    })
+}

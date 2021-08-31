@@ -72,6 +72,26 @@ const routes = [
     path: '/detailCourse',
     component: () => import('@/views/ShowTeachers/detailCourse.vue'),
   },
+  //签到页面
+  {
+    path: '/sign',
+    component: () => import('@/views/Person/sign.vue'),
+  },
+  //更多页面
+  {
+    path: '/more',
+    component: () => import('@/views/Person/more.vue'),
+  },
+  //兑换页面
+  {
+    path: '/store',
+    component: () => import('@/views/Person/store.vue'),
+  },
+  //兑换记录页面
+  {
+    path: '/record',
+    component: () => import('@/views/record.vue'),
+  },
   {
     path:"*",
     redirect:"/home",  

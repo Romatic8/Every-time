@@ -1,0 +1,24 @@
+{
+    "code": 200,
+    "msg": "\u6210\u529f",
+    "data": {
+        "limit": 10,
+        "total": 1,
+        "current_page": 1,
+        "list": [
+            {
+                "id": 2,
+                "cover_img": "http:\/\/120.53.31.103:84\/uploads\/image\/2021-04-07\/H2FyMmqIV87LZIUR0qG1AQziJsgVtgGcidQFoGZz.jpeg",
+                "goods_id": 6,
+                "goods_type": 2,
+                "exchange_price": 1,
+                "course_status": null,
+                "course_name": null,
+                "course_type": null,
+                "book_name": "VUE \u5f00\u53d1\u540e\u53f0\u7ba1\u7406\u7cfb\u7edf",
+                "author": "WYL",
+                "book_status": 1
+            }
+        ]
+    }
+}

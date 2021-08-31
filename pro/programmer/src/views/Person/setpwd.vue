@@ -1,7 +1,7 @@
 <template>
 <div class="setpwd">
       <van-cell title="设置密码"   is-link  @click="$router.push('/setP')" />
-      <van-cell  title="注销账号"   is-link  />
+      <van-cell  title="注销账号"  @click="zhuxiao"  is-link  />
       <div class="btn" @click="logout">
           退出登录
       </div>
