@@ -122,6 +122,14 @@ export function sign(arg){
         method:"get"
     })
 }
+//日历
+export function datas(arg){
+    return service({
+        url:request_ur.datas,
+        params:arg, //参数
+        method:"get"
+    })
+}
 
 //签到里面的好课推荐
 export function inter(params){
@@ -138,5 +146,51 @@ export function signDetail(arg){
         url:request_ur.signDetail,
         data:arg, //参数
         method:"get"
+    })
+}
+
+
+//推荐课程列表
+export function sysCourse(arg){
+    return service({
+        url:request_ur.sysCourse+arg,
+        data:arg, //参数
+        method:"post"
+    })
+}
+
+//二级路由的课程列表
+export function attrs(arg){
+    return service({
+        url:request_ur.attrs,
+        params:arg, //参数
+        method:"get"
+    })
+}
+//回访里面的数据
+export function sysList(arg){
+    return service({
+        url:request_ur.sysList,
+        params:arg, //参数
+        method:"post"
+    })
+}
+
+//图书
+export function book(arg){
+    return service({
+        url:request_ur.book,
+        params:arg, //参数
+        method:"get"
+    })
+}
+
+
+//设置密码
+export function password(arg){
+    return service({
+        url:request_ur.password,
+        data:arg, //参数
+        method:"post"
     })
 }

@@ -41,7 +41,7 @@
                 :desc="ite.introduction"
                 :title="ite.teacher_name"
                 :thumb="ite.teacher_avatar"
-                 :thumb-link="'/detail?teacher_id='+ite.teacher_id"
+                 :thumb-link="'/detail?id='+ite.teacher_id"
             />
             </div>
         </div>
@@ -57,8 +57,9 @@
                 :desc="ite.title"
                 :title="ite.teacher_name"
                 :thumb="ite.cover_img"
-                 :thumb-link="'/detail?teacher_id='+ite.teacher_id"
+                :thumb-link="'/detailCourse?basis_id='+ite.id"
             >
+             
              <template #footer>
                  <p v-if="ite.price==ite.underlined_price"><span  style="color:green;">免费</span></p >
                    <p v-else>
@@ -82,7 +83,7 @@
                 :desc="ite.introduction"
                 :title="ite.teacher_name"
                 :thumb="ite.teacher_avatar"
-                 :thumb-link="'/detail?teacher_id='+ite.teacher_id"
+                 :thumb-link="'/detail?id='+ite.teacher_id"
             />
              
             </div>

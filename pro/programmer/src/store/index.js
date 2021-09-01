@@ -10,7 +10,8 @@ let store= new Vuex.Store({
   state: {
     token:[],
     toke:"",
-    pwd:[]
+    pwd:[],
+    
   },
   mutations: {
     //获取验证码

@@ -37,9 +37,23 @@
             </van-dialog>
         </div>
         <div class="s">
-                <Calender />
+                <!-- <Calender /> -->
+               
+          <van-calendar
+             :show-subtitle="true"
+              row-height="45px"
+              :show-mark="false"
+              :show-title ="false"
+              :poppable="false"
+              :formatter="formatter"
+              :show-confirm="false"
+              :style="{ height: '300px' }"
+            />
         </div>
       </div>
+
+
+
       <div class="next">
          <div class="recommend-wrap" >
           <div class="head">
@@ -96,8 +110,8 @@
 
 <script>
 
-import { inter } from "@/http/api";
-import Calender from "@/components/Calender.vue"
+import { inter,datas } from "@/http/api";
+import {Calender} from "@/components/Calender.vue"
 // console.log(goodsclass);
 export default {
   components: {Calender},
@@ -111,6 +125,20 @@ export default {
   },
 
   methods: {
+      formatter(day) {
+      const month = day.date.getMonth() + 1;
+      const date = day.date.getDate();
+       const today=new Date();
+        const year=today.getFullYear()
+        const month_new=today.getMonth()+1
+        const date_new=today.getDate()
+      if(month_new==month&&date_new==date){
+        day.bottomInfo="+1"
+        day.text="√"
+      }
+
+      return day;
+    },
     //去兑换
     goHuan1(type){
        this.$router.push('/store?type='+type)
@@ -118,16 +146,12 @@ export default {
     goHuan2(type){
        this.$router.push('/store?type='+type)
     },
-    formatDate(date) {
-      date = new Date(date);
-      return `${date.getMonth() + 1}/${date.getDate()}`;
-    },
+   
     onMore() {
       this.$router.push('/more')
     },
     async requestRecommend() {
        let res=await inter({type:1})
-       console.log(res,"231233");
        this.rCourse=res.data.list[0]
        console.log(this.rCourse,"课程");
     },
@@ -144,11 +168,23 @@ export default {
   created() {
       this.requestRecommend();
       this.rbooks();
-    }
+    },
+  async mounted(){
+   const today=new Date();
+   const year=today.getFullYear();
+   const month_new=today.getMonth()+1;
+   const date_new=today.getDate();
+   let res =await datas({date:`${year}-${month_new}-${date_new}`})
+   console.log(`${year}-${month_new}-${date_new}`,"日历");
+   console.log(res,"日历");
+ },
 };
 </script> 
 
 <style scoped lang='scss'>
+.bottom {
+  flex: 7;
+}
 .sign {
   width: 100%;
   position: relative;
@@ -217,11 +253,11 @@ export default {
       }
     }
   .s {
-     width: 100%;
+     width: 95%;
       position: absolute;
       top: 220px;
-      padding-left: 20px;
-      box-sizing: border-box;
+      left: 20px;
+      box-sizing: border-box;       
      
     }
   }

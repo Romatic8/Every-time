@@ -3,13 +3,14 @@
     <div class="box1">
             <div class="card" >
                 <van-card
-                v-for="(ite,ind) in list.list"
+                v-for="(ite,ind) in list"
                 :key="ind"
                 :desc="ite.introduction"
-                :title="ite.teacher_name"
-                :thumb="ite.teacher_avatar"
-                :thumb-link="'/detail?teacher_id='+ite.teacher_id"
+                :title="ite.real_name"
+                :thumb="ite.avatar"
+                :thumb-link="'/detail?id='+ite.id"
             />
+            
             </div>
         </div>
 
@@ -21,21 +22,22 @@
 </template>
 
 <script>
-import { appIndex } from "@/http/api";
+import { attrs } from "@/http/api";
 export default {
   components: {},
   data () {
     return {
-    list:[]
+    list:[],
+    page:1,
+    limit:10
 }
   },
 
   methods: {
      async getapp() {
-      let { data: res } = await appIndex();
-      console.log(res, "11");
-      this.list = res[2];
-      console.log(this.list,"1");
+      let { data: res } = await attrs({page:this.page,limit:this.limit});
+      console.log(res.list, "课程");
+     this.list=res.list
     },
 },
 

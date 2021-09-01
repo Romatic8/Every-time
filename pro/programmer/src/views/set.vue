@@ -35,6 +35,7 @@
 </template>
 
 <script>
+import { password} from "@/http/api";
 export default {
   components: {},
   data () {
@@ -42,7 +43,9 @@ export default {
     password:"",
     secondPassword:"",
     active:"",
-    list:JSON.parse(localStorage.getItem("list")) || []
+    // list:JSON.parse(localStorage.getItem("list")) || []
+    mobile:"",
+    
 }
   },
 
@@ -59,13 +62,14 @@ export default {
       this.$toast.fail("量词输入的密码不相同")
     }
     if(this.password==this.secondPassword){
-       let res=await this.$http.post("/password",{
-         mobile:this.list.mobile,
+       let res=await password({
+         mobile:this.mobile,
          password:this.password,
-         sms_code:this.list.sms_code
+         sms_code:localStorage.getItem('code')
        })
+       console.log(res,"密码");
        if(res.code==200){
-         this.$router.push("/mys")
+         this.$router.push("/Person")
        }
     }
   }
@@ -73,7 +77,11 @@ export default {
 
   mounted () {
   console.log(this.list);
+
   },
+created(){
+  this.mobile=this.$store.state.token.mobile
+}
 }
 </script> 
 

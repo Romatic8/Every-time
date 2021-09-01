@@ -6,11 +6,11 @@
 
             <!-- <button class="preMonth" >&lt;</button> -->
             <!-- </div> -->
-            <div class="data_riqi">
+            <!-- <div class="data_riqi">
                 <img src="@/assets/arrow-left-filling.png" alt="" @click="getMyDate(year,month-parseInt(1,10))" class="left_but">
                 <span class="riqi">{{year}}年{{month}}月</span>
                 <img class="right_but" src="@/assets/arrow-right-filling.png" alt="" @click="getMyDate(year,month+parseInt(1,10))">
-            </div>
+            </div> -->
             <!-- <div class="nextDate"> -->
 
             <!-- <button class="nextMonth" >&gt;</button> -->
@@ -19,7 +19,17 @@
         </div>
 
         <div class="bottom">
-            <table>
+          <van-calendar
+             :show-subtitle="true"
+              row-height="40px"
+              :show-mark="false"
+              :show-title ="false"
+              :poppable="false"
+              :formatter="formatter"
+              :show-confirm="false"
+              :style="{ height: '500px' }"
+            />
+            <!-- <table>
                 <thead>
                     <tr>
                         <th v-for="(item,index) in weeks" :key="index">
@@ -29,21 +39,24 @@
                 </thead>
                 <tbody>
                     <tr v-for="(item,index) in all" :key="index">
-                        <th v-for="(item2,index) in item" :key="index" v-if="item2===day" class="active">{{item2}}</th>
+                        <th  v-for="(item2,index) in item" :key="index" v-if="item2===day" class="active">{{item2}}</th>
                         <th v-else-if="item2>0">{{item2}}</th>
                         <th v-else></th>
                     </tr>
                 </tbody>
-            </table>
+            </table> -->
         </div>
     </div>
 </template>
  
 <script>
+  import {datas} from "@/http/api";
+
 export default {
   name: "calender",
   data() {
     return {
+     
       year: 2019, // 设置当前年份
       month: 8, // 设置当前月份
       day: 1, // 设置当前号数
@@ -62,7 +75,30 @@ export default {
   beforeMount() {
     this.getMyDate();
   },
+  async mounted(){
+   const today=new Date();
+   const year=today.getFullYear();
+   const month_new=today.getMonth()+1;
+   const date_new=today.getDate();
+   let res =await datas({date:`${year}-${month_new}-${date_new}`})
+   console.log(`${year}-${month_new}-${date_new}`,"日历");
+   console.log(res,"日历");
+ },
   methods: {
+     formatter(day) {
+      const month = day.date.getMonth() + 1;
+      const date = day.date.getDate();
+       const today=new Date();
+        const year=today.getFullYear()
+        const month_new=today.getMonth()+1
+        const date_new=today.getDate()
+      if(month_new==month&&date_new==date){
+        day.bottomInfo="+1"
+        day.text="√"
+      }
+
+      return day;
+    },
     getMyDate(year = false, month = false) {
       let obj; // 初始化的时间对象
       let first = []; // 第1排的数据
@@ -126,23 +162,27 @@ export default {
       // 将第1排和第2-6排数据合到一起
       this.all.push(first);
       second.forEach(x => this.all.push(x));
-    }
-  }
+    },
+    // dian() {
+     // console.log(123);
+    // }
+  },
+ 
 };
 </script>
  
 <style lang="scss" scoped>
-.data_riqi{
-    margin-top: 40px;
-    margin-left: 20px;
-    margin-bottom: 40px;
-    display: flex;
-    align-items: center;
-    
-    .riqi{
-        margin: 0 10px;
-        font-size: 35px;
-    }
+.data_riqi {
+  margin-top: 40px;
+  margin-left: 20px;
+  margin-bottom: 40px;
+  display: flex;
+  align-items: center;
+
+  .riqi {
+    margin: 0 10px;
+    font-size: 35px;
+  }
 }
 .left_but,
 .right_but {
@@ -159,6 +199,9 @@ export default {
   background-color: white;
   border-radius: 20px;
   overflow: hidden;
+}
+.van-calendar__selected-day {
+   bottom: -2px !important;
 }
 .top {
   width: 700px;

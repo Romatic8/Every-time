@@ -118,11 +118,13 @@ export default {
         client: "1" //学生端
       });
 
-      var obj = res.data;
+     console.log(res,"index");
+   
       if (res.code == 200) {
+         localStorage.setItem('code',this.code)
         this.$router.push("/set");
       }
-      this.$store.commit("setToken", obj);
+      this.$store.commit("setToken", res.data);
     },
     //切换密码和验证码登录
     userPwd() {
@@ -145,10 +147,10 @@ export default {
         type: 1, //密码登录
         client: "1" //学生端
       });
-      console.log(res);
+      console.log(res,"index");
       if (res.code == 200) {
         this.$toast.success("登陆成功");
-        this.$router.push("/mys");
+        this.$router.push("/Person");
         this.$store.commit('setToken',res.data)
       } else {
         this.$toast.fail(res.msg);

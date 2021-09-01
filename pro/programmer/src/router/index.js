@@ -34,12 +34,12 @@ const routes = [
      {
       path: "/Person",
       name:"/Person",
-      component: () => import('@/views/Person/Person.vue'),
+      component: () => import('@/views/Person/mys.vue'),
      },
      {
       path: "/mys",
       name:"/mys",
-      component: () => import('@/views/Person/mys.vue'),
+      component: () => import('@/views/Person/Person.vue'),
      },
     ]
   },
@@ -51,6 +51,10 @@ const routes = [
   {
     path: '/detail',
     component: () => import('@/views/ShowTeachers/detail.vue'),
+  },
+  {
+    path: '/details',
+    component: () => import('@/views/ShowTeachers/details.vue'),
   },
   //设置密码
   {

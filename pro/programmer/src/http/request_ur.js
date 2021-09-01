@@ -9,10 +9,16 @@ module.exports={
     infor:"/app/information/index",//咨询全部内容的接口
     infoClassfiy:"/app/information/classify?",//咨询里面的tab字段
     comment:"/app/courseInfo/basis_id=",//主讲课程的详情页面
+    attrs:"/app/teacher/search/attrs",//课程列表
     detail:"/app/teacher/",
     course:"/app/teacher/mainCourse",//主讲课程
     book:"/app/book/classify?",//图书,
     sign:"/app/user/integral/isSign", //签到惊喜
     inter:"/integral/shop/index",//签到中的列表数据
     // signDetail:"/integral/goods/index",  //签到里面的详情
+    sysCourse:"/app/sysCourseList",   //点击推荐课程进入的是列表
+    sysList:"/app/courseChapter",
+    datas:"/app/user/integral/signRecord",   //日期  ?date=2021-9-1&
+    book:"/app/book/classify?",    //图书
+    password:"/app/password"
 }

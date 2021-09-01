@@ -54,7 +54,8 @@ export default {
   components: {},
   data () {
     return {
-     teacher_id:this.$route.query.teacher_id,
+     id:this.$route.query.id,
+    //  teacher_id:this.$route.query.teacher_id,
      Tealist:[],
      active:2,
      courseList:[]
@@ -63,22 +64,23 @@ export default {
 
   methods: {
     async detal(){
-        let res=await detail(this.teacher_id)
-        // console.log(res);
-        this.Tealist=res.data.teacher
+         let res=await detail(this.id)
+         console.log(res,"id");
+         this.Tealist=res.data.teacher
     },
     //主讲课程
     async main(){
-        let res= await course()
-        console.log(res.data.list,"主讲课程");
-        this.courseList=res.data.list
+        console.log(this.id);
+        let res= await course({teacher_id:this.id})
+        console.log(res,"主管回复");
+         this.courseList=res.data.list
     }
 },
 
   mounted () {
    this.detal()
    this.main()
-    
+  
   },
 }
 </script> 
@@ -102,8 +104,6 @@ export default {
             font-weight: 500;
             line-height: 35px;
         }
-       
-      
     }
     .tabs{
         width: 100%;
