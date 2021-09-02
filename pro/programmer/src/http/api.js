@@ -176,7 +176,7 @@ export function sysList(arg){
     })
 }
 
-//图书
+//图书  //tab
 export function book(arg){
     return service({
         url:request_ur.book,
@@ -184,12 +184,28 @@ export function book(arg){
         method:"get"
     })
 }
-
+//图书列表
+export function books(arg){
+    return service({
+        url:request_ur.books+arg,
+        params:arg, //参数
+        method:"get"
+    })
+}
 
 //设置密码
 export function password(arg){
     return service({
         url:request_ur.password,
+        data:arg, //参数
+        method:"post"
+    })
+}
+
+//咨询里面的详情
+export function inforDetail(arg){
+    return service({
+        url:request_ur.inforDetail,
         data:arg, //参数
         method:"post"
     })

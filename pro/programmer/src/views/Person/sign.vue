@@ -111,10 +111,10 @@
 <script>
 
 import { inter,datas } from "@/http/api";
-import {Calender} from "@/components/Calender.vue"
+// import {Calender} from "@/components/Calender.vue"
 // console.log(goodsclass);
 export default {
-  components: {Calender},
+  components: {},
   data() {
     return {
       show: true,

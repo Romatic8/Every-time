@@ -43,6 +43,12 @@ const routes = [
      },
     ]
   },
+  //咨询详情
+  {
+    path: "/inforDetail",
+    name:"/inforDetail",
+    component: () => import('@/views/News/inforDetail.vue'),
+   },
    //注册页面
    {
     path: '/login',

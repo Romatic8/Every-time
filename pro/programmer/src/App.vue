@@ -14,6 +14,6 @@ html,body,#app{
 *{
   padding: 0;
   margin: 0;
-  font-size: 28px;
+  font-size: 30px;
 }
 </style>

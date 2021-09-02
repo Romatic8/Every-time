@@ -1,11 +1,11 @@
 <template>
 <div class="news">
     <div class="nav">
-        <van-tabs @change="onTabChange">
+        <van-tabs @click="onTabChange">
             <van-tab v-for="(item, index) in newsTab" :key="index" :title="item.name">
                <template>
                     <ul class="news-content">
-                        <li v-for="(item, index) in classfiy" :key="index" >
+                        <li v-for="(item, index) in classfiy" :key="index" @click="go(item.id)">
                             <img :src="item.thumb_img" />
                             <div>
                             <p class="name">{{ item.title }}</p>
@@ -20,6 +20,13 @@
                </template>
             </van-tab>
         </van-tabs>
+
+          <div class="tu" v-show="isshow">
+                     <img src="@/assets/empty.png" alt="">
+                     <p>
+                       暂无评论
+                     </p>
+          </div>
     </div>
 </div>
 </template>
@@ -32,7 +39,8 @@ export default {
     return {
       classfiy: [], 
       newsTab: [],//tab
-      classify_id:0
+      classify_id:0,
+      isshow:false
     };
   },
 
@@ -57,12 +65,19 @@ export default {
     },
     //tab切换
     onTabChange(index) {
+      console.log(index);
+      if(index==3){
+        this.isshow=true
+      }else{
+        this.isshow=false
+      }
       this.classify_id=this.newsTab[index].id
-      // if(this.newsTab[index]==0){
-      //   this.newsTab
-      // }
       console.log(this.classify_id);
       this.getNews()
+    },
+    go(id){
+      console.log(id,"id2");
+      this.$router.push('/inforDetail?information_id='+id)
     }
   },
 
@@ -76,6 +91,17 @@ export default {
 <style scoped lang='scss'>
 .news {
   width: 100%;
+   .tu{
+      width:100%;
+      text-align: center;
+      img{
+        width: 200px;
+        height: 200px;
+      }
+      p{
+        width: 100%;
+      }
+    }
   .news-content {
   padding: 30px;
   li {
